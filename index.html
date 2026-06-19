@@ -6,9 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO -->
-<meta name="description" content="AstraSix Technical Services LLC - UAE based MEP, Lighting, Automation, ELV, and Smart Building Solutions provider.">
-
 <!-- FAVICON -->
 <link rel="icon" href="https://astrasix.ae/images/astrasix-logo.png">
 
@@ -21,7 +18,7 @@
 
 <style>
 
-/* ================= GLOBAL ================= */
+/* GLOBAL */
 *{
 margin:0;
 padding:0;
@@ -32,11 +29,11 @@ scroll-behavior:smooth;
 
 body{
 background:#05070f;
-color:#fff;
+color:white;
 overflow-x:hidden;
 }
 
-/* ================= BACKGROUND ================= */
+/* BACKGROUND */
 canvas{
 position:fixed;
 top:0;
@@ -46,36 +43,17 @@ z-index:-5;
 
 .blob{
 position:fixed;
-width:520px;
-height:520px;
-filter:blur(130px);
+width:500px;
+height:500px;
+filter:blur(120px);
 opacity:0.2;
 border-radius:50%;
-animation:float 12s infinite ease-in-out;
-z-index:-4;
 }
 
 .blob1{background:#00e5ff; top:-120px; left:-120px;}
-.blob2{background:#6c63ff; bottom:-150px; right:-120px;}
+.blob2{background:#6c63ff; bottom:-120px; right:-120px;}
 
-@keyframes float{
-0%,100%{transform:translate(0,0)}
-50%{transform:translate(90px,-70px)}
-}
-
-/* ================= CURSOR ================= */
-.cursor{
-position:fixed;
-width:260px;
-height:260px;
-border-radius:50%;
-background:radial-gradient(circle,#00e5ff40,transparent 70%);
-transform:translate(-50%,-50%);
-pointer-events:none;
-z-index:999;
-}
-
-/* ================= NAV ================= */
+/* NAV */
 header{
 position:fixed;
 top:0;
@@ -85,8 +63,7 @@ justify-content:space-between;
 align-items:center;
 padding:16px 60px;
 background:rgba(0,0,0,0.3);
-backdrop-filter:blur(22px);
-border-bottom:1px solid rgba(0,229,255,0.12);
+backdrop-filter:blur(20px);
 z-index:1000;
 }
 
@@ -95,15 +72,14 @@ z-index:1000;
 nav a{
 margin-left:18px;
 text-decoration:none;
-color:#fff;
+color:white;
 opacity:0.7;
 font-size:14px;
-transition:0.3s;
 }
 
 nav a:hover{color:#00e5ff;opacity:1;}
 
-/* ================= HERO ================= */
+/* HERO */
 .hero{
 height:100vh;
 display:flex;
@@ -114,105 +90,53 @@ text-align:center;
 padding:20px;
 }
 
-.hero img{
-width:300px;
-margin-bottom:20px;
-filter:drop-shadow(0 0 25px rgba(0,229,255,0.5));
-animation:floatLogo 6s ease-in-out infinite;
-}
-
-@keyframes floatLogo{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
-}
-
 .hero h1{
 font-size:60px;
-font-weight:700;
-background:linear-gradient(90deg,#00e5ff,#ffffff);
+background:linear-gradient(90deg,#00e5ff,#fff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-.hero p{
-max-width:800px;
-margin-top:15px;
-opacity:0.8;
-line-height:1.7;
-font-size:16px;
-}
+.hero p{max-width:700px;opacity:0.8;}
 
-/* ================= BUTTON ================= */
+/* BUTTON */
 .btn{
-margin-top:25px;
+margin-top:20px;
 padding:12px 28px;
-border-radius:10px;
 border:1px solid #00e5ff;
 color:#00e5ff;
+border-radius:10px;
 text-decoration:none;
-transition:0.3s;
 display:inline-block;
 }
 
 .btn:hover{
 background:#00e5ff;
-color:#000;
-box-shadow:0 0 30px #00e5ff;
-transform:translateY(-2px);
+color:black;
 }
 
-/* ================= SECTIONS ================= */
+/* SECTIONS */
 section{
 padding:120px 10%;
-max-width:1200px;
-margin:auto;
 text-align:center;
 }
 
-section h2{
-font-size:36px;
-margin-bottom:20px;
-color:#00e5ff;
-}
-
-section p{
-opacity:0.85;
-line-height:1.8;
-}
-
-/* ================= GRID ================= */
+/* CARDS */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 margin-top:40px;
 }
 
-/* ================= CARDS ================= */
 .card{
 background:rgba(255,255,255,0.04);
-border:1px solid rgba(0,229,255,0.12);
-padding:28px;
-border-radius:18px;
-backdrop-filter:blur(16px);
-opacity:0;
-transform:translateY(30px);
-transition:0.4s;
-text-align:left;
+padding:25px;
+border-radius:15px;
+border:1px solid rgba(0,229,255,0.15);
 }
 
-.card:hover{
-transform:translateY(-10px) scale(1.03);
-border-color:#00e5ff60;
-box-shadow:0 20px 60px rgba(0,229,255,0.15);
-}
-
-.card h3{
-color:#00e5ff;
-margin-bottom:10px;
-}
-
-/* ================= CONTACT ================= */
+/* FORM */
 form{
 max-width:700px;
 margin:auto;
@@ -222,35 +146,28 @@ input,textarea{
 width:100%;
 padding:14px;
 margin:10px 0;
-border-radius:8px;
 background:#0a0f1a;
 border:1px solid #00e5ff22;
 color:white;
+border-radius:8px;
 }
 
-button.btn{
-background:transparent;
-cursor:pointer;
-}
-
-/* ================= FOOTER ================= */
+/* FOOTER */
 footer{
-padding:30px;
+padding:25px;
 text-align:center;
 background:#000;
-border-top:1px solid rgba(0,229,255,0.15);
-opacity:0.85;
 }
 
-/* ================= WHATSAPP ================= */
+/* WHATSAPP */
 .whatsapp{
 position:fixed;
-bottom:25px;
-right:25px;
+bottom:20px;
+right:20px;
 background:#00e676;
 padding:14px 18px;
 border-radius:50px;
-color:#000;
+color:black;
 font-weight:600;
 text-decoration:none;
 }
@@ -262,9 +179,6 @@ text-decoration:none;
 
 <div class="blob blob1"></div>
 <div class="blob blob2"></div>
-
-<div class="cursor"></div>
-<canvas id="particles"></canvas>
 
 <header>
 <div class="logo">
@@ -280,140 +194,66 @@ text-decoration:none;
 </nav>
 </header>
 
-<!-- ================= HOME ================= -->
+<!-- HERO -->
 <section class="hero" id="home">
-
-<img src="https://astrasix.ae/images/astrasix-logo.png">
-
+<img src="https://astrasix.ae/images/astrasix-logo.png" style="width:280px;margin-bottom:20px;">
 <h1>Engineering Intelligent Spaces</h1>
-
-<p>
-AstraSix Technical Services LLC is a UAE-based engineering company delivering integrated building solutions across MEP, Lighting, Automation, ELV systems, and Media Signage.
-We transform traditional spaces into intelligent, efficient, and future-ready environments.
-</p>
-
+<p>AstraSix delivers MEP, Lighting, Automation, ELV and Smart Building Solutions across UAE.</p>
 <a class="btn" href="#contact">Request Consultation</a>
-
 </section>
 
-<!-- ================= ABOUT ================= -->
+<!-- ABOUT -->
 <section id="about">
-
-<h2>About AstraSix</h2>
-
+<h2>About Us</h2>
 <p>
-Founded with a vision to redefine modern engineering standards in the UAE, AstraSix Technical Services LLC specializes in delivering end-to-end building infrastructure solutions.
-We combine technical expertise with innovation to create smart environments that enhance efficiency, safety, and user experience.
+AstraSix Technical Services LLC is a UAE-based engineering company delivering integrated building systems and smart infrastructure solutions.
 </p>
-
-<div class="grid">
-
-<div class="card">
-<h3>Our Vision</h3>
-<p>To become a leading smart engineering solutions provider in the Middle East through innovation and excellence.</p>
-</div>
-
-<div class="card">
-<h3>Our Mission</h3>
-<p>Deliver high-quality, reliable, and energy-efficient engineering solutions tailored to client needs.</p>
-</div>
-
-<div class="card">
-<h3>Our Approach</h3>
-<p>Design → Engineering → Execution → Maintenance with precision and accountability at every stage.</p>
-</div>
-
-</div>
-
 </section>
 
-<!-- ================= SERVICES ================= -->
+<!-- SERVICES -->
 <section id="services">
-
-<h2>Our Services</h2>
+<h2>Services</h2>
 
 <div class="grid">
-
-<div class="card">
-<h3>MEP Engineering</h3>
-<p>Complete mechanical, electrical, and plumbing solutions for commercial and residential projects.</p>
+<div class="card">MEP Engineering</div>
+<div class="card">Lighting Design</div>
+<div class="card">Automation Systems</div>
+<div class="card">ELV Solutions</div>
 </div>
-
-<div class="card">
-<h3>Lighting Design</h3>
-<p>Architectural, façade, and interior lighting systems designed for efficiency and aesthetics.</p>
-</div>
-
-<div class="card">
-<h3>Building Automation</h3>
-<p>Smart control systems for HVAC, lighting, energy management, and integrated building operations.</p>
-</div>
-
-<div class="card">
-<h3>ELV Systems</h3>
-<p>CCTV, access control, structured cabling, public address and safety systems.</p>
-</div>
-
-<div class="card">
-<h3>Media Signage</h3>
-<p>LED walls, digital signage, and interactive display systems for commercial spaces.</p>
-</div>
-
-<div class="card">
-<h3>AMC Services</h3>
-<p>Annual maintenance contracts ensuring long-term performance and reliability of systems.</p>
-</div>
-
-</div>
-
 </section>
 
-<!-- ================= PROJECTS ================= -->
+<!-- PROJECTS -->
 <section id="projects">
-
-<h2>Featured Projects</h2>
+<h2>Projects</h2>
 
 <div class="grid">
-
-<div class="card">
-<h3>Luxury Hotel Automation</h3>
-<p>Full ELV + lighting automation system integration across guest rooms and common areas.</p>
+<div class="card">Hotel Automation</div>
+<div class="card">Smart Villas</div>
+<div class="card">Retail LED Systems</div>
+<div class="card">Corporate Offices</div>
 </div>
-
-<div class="card">
-<h3>Smart Villa Project</h3>
-<p>Advanced home automation including lighting scenes, CCTV, and access control systems.</p>
-</div>
-
-<div class="card">
-<h3>Retail LED Facade</h3>
-<p>High-brightness LED media facade for branding and digital advertising in commercial zones.</p>
-</div>
-
-<div class="card">
-<h3>Corporate Office Fit-out</h3>
-<p>Integrated MEP, lighting, and network infrastructure for a modern office environment.</p>
-</div>
-
-</div>
-
 </section>
 
-<!-- ================= CONTACT ================= -->
+<!-- CONTACT -->
 <section id="contact">
 
 <h2>Contact Us</h2>
 
-<p style="margin-bottom:20px;">
-We typically respond within 24 hours.
-</p>
+<p style="margin-bottom:20px;">Send us your enquiry directly to our team.</p>
 
-<form action="mailto:info@astrasix.ae" method="post" enctype="text/plain">
+<!-- ✅ SECURE FORM (NO WARNING) -->
+<form action="https://formsubmit.co/info@astrasix.ae" method="POST">
 
-<input type="text" name="name" placeholder="Full Name" required>
-<input type="email" name="email" placeholder="Email Address" required>
+<!-- disables captcha page -->
+<input type="hidden" name="_captcha" value="false">
+
+<!-- success redirect (optional) -->
+<input type="hidden" name="_next" value="https://astrasix.ae/thank-you">
+
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
 <input type="text" name="company" placeholder="Company (Optional)">
-<textarea name="message" rows="6" placeholder="Tell us about your project..." required></textarea>
+<textarea name="message" rows="6" placeholder="Your Message" required></textarea>
 
 <button type="submit" class="btn">Send Enquiry</button>
 
@@ -431,70 +271,6 @@ We typically respond within 24 hours.
 </footer>
 
 <a class="whatsapp" href="https://wa.me/971523363396">WhatsApp</a>
-
-<script>
-
-/* CURSOR */
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
-});
-
-/* PARTICLES */
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-for(let i=0;i<90;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-dx:(Math.random()-0.5)*0.3,
-dy:(Math.random()-0.5)*0.3
-});
-}
-
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p=>{
-p.x+=p.dx;
-p.y+=p.dy;
-
-if(p.x<0||p.x>canvas.width)p.dx*=-1;
-if(p.y<0||p.y>canvas.height)p.dy*=-1;
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fillStyle="#00e5ff";
-ctx.fill();
-});
-
-requestAnimationFrame(animate);
-}
-animate();
-
-/* GSAP */
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.utils.toArray(".card").forEach(card=>{
-gsap.to(card,{
-scrollTrigger:{
-trigger:card,
-start:"top 85%"
-},
-opacity:1,
-y:0,
-duration:0.8
-});
-});
-
-</script>
 
 </body>
 </html>
