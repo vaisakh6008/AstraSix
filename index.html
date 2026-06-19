@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AstraSix Technical Services LLC</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ✅ FAVICON / TITLE BAR LOGO -->
+<link rel="icon" type="image/png" href="https://astrasix.ae/images/astrasix-logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://astrasix.ae/images/astrasix-logo.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://astrasix.ae/images/astrasix-logo.png">
+<link rel="apple-touch-icon" href="https://astrasix.ae/images/astrasix-logo.png">
+<meta name="theme-color" content="#00e5ff">
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter', sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#05070f;
+color:white;
+overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-5;
+}
+
+.blob{
+position:fixed;
+width:500px;
+height:500px;
+filter:blur(120px);
+opacity:0.25;
+z-index:-4;
+border-radius:50%;
+animation:float 10s infinite ease-in-out;
+}
+
+.blob1{background:#00e5ff; top:-100px; left:-100px;}
+.blob2{background:#5b5bff; bottom:-150px; right:-100px;}
+
+@keyframes float{
+0%,100%{transform:translate(0,0)}
+50%{transform:translate(80px,-60px)}
+}
+
+/* =========================
+   CURSOR
+========================= */
+.cursor{
+position:fixed;
+width:280px;
+height:280px;
+border-radius:50%;
+background:radial-gradient(circle,#00e5ff55,transparent 70%);
+transform:translate(-50%,-50%);
+pointer-events:none;
+z-index:999;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 60px;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(0,229,255,0.15);
+z-index:1000;
+}
+
+.logo img{
+height:52px;
+filter:drop-shadow(0 0 15px rgba(0,229,255,0.4));
+}
+
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:white;
+font-size:14px;
+opacity:0.7;
+transition:0.3s;
+}
+
+nav a:hover{
+opacity:1;
+color:#00e5ff;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero img{
+width:320px;
+margin-bottom:20px;
+filter:drop-shadow(0 0 25px rgba(0,229,255,0.5));
+animation:floatLogo 5s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-12px)}
+}
+
+.hero h1{
+font-size:68px;
+font-weight:700;
+background:linear-gradient(90deg,#00e5ff,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero h3{
+margin-top:10px;
+color:#00e5ff;
+font-weight:400;
+letter-spacing:1px;
+}
+
+.hero p{
+margin-top:15px;
+opacity:0.75;
+max-width:650px;
+line-height:1.6;
+}
+
+.btn{
+margin-top:25px;
+padding:12px 30px;
+border-radius:10px;
+border:1px solid #00e5ff;
+color:#00e5ff;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#00e5ff;
+color:black;
+box-shadow:0 0 30px #00e5ff;
+transform:translateY(-2px);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+section{
+padding:120px 10%;
+max-width:1200px;
+margin:auto;
+text-align:center;
+}
+
+section h2{
+font-size:34px;
+margin-bottom:20px;
+color:#00e5ff;
+}
+
+section p{
+opacity:0.8;
+line-height:1.7;
+}
+
+/* =========================
+   CARDS
+========================= */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(0,229,255,0.12);
+padding:28px;
+border-radius:18px;
+backdrop-filter:blur(16px);
+transition:0.4s;
+opacity:0;
+transform:translateY(30px);
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+border-color:#00e5ff60;
+box-shadow:0 20px 60px rgba(0,229,255,0.15);
+}
+
+/* =========================
+   CLIENTS
+========================= */
+.clients{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+opacity:0.8;
+}
+
+/* =========================
+   CONTACT
+========================= */
+input,textarea{
+width:100%;
+padding:14px;
+margin:10px 0;
+border-radius:8px;
+background:#0a0f1a;
+border:1px solid #00e5ff22;
+color:white;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+padding:30px;
+text-align:center;
+border-top:1px solid rgba(0,229,255,0.15);
+background:#000;
+opacity:0.8;
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+.whatsapp{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#00e676;
+padding:14px 18px;
+border-radius:50px;
+color:black;
+font-weight:600;
+box-shadow:0 0 25px rgba(0,230,118,0.4);
+text-decoration:none;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{
+width:6px;
+}
+::-webkit-scrollbar-thumb{
+background:#00e5ff55;
+border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<div class="cursor"></div>
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<header>
+<div class="logo">
+<img src="https://astrasix.ae/images/astrasix-logo.png">
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#projects">Projects</a>
+<a href="#clients">Clients</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+<img src="https://astrasix.ae/images/astrasix-logo.png">
+
+<h1>AstraSix Technical Services LLC</h1>
+<h3>Engineering Intelligent Spaces</h3>
+<p>MEP • Lighting • Automation • Media Signage • ELV • AMC Services</p>
+
+<a class="btn" href="#contact">Get Consultation</a>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<h2>About Us</h2>
+<p>
+We deliver advanced engineering solutions across UAE with intelligent systems, automation, ELV, lighting design and facility management excellence.
+</p>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<h2>Our Services</h2>
+
+<div class="grid">
+<div class="card">MEP Engineering</div>
+<div class="card">Lighting Design</div>
+<div class="card">Automation Systems</div>
+<div class="card">Media Signage</div>
+<div class="card">ELV Systems</div>
+<div class="card">AMC Services</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<h2>Projects</h2>
+
+<div class="grid">
+<div class="card">Hotel Automation</div>
+<div class="card">Luxury Villas</div>
+<div class="card">LED Facades</div>
+<div class="card">Retail Digital Systems</div>
+</div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+<h2>Clients</h2>
+
+<div class="clients">
+<div>Hotels</div>
+<div>Retail</div>
+<div>Real Estate</div>
+<div>Government</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact</h2>
+
+<p>+971523363396</p>
+<p>vaisakh@astrasix.ae</p>
+
+<input placeholder="Name">
+<input placeholder="Email">
+<textarea rows="5" placeholder="Message"></textarea>
+
+<a class="btn">Send Message</a>
+</section>
+
+<footer>
+© 2026 AstraSix Technical Services LLC
+</footer>
+
+<a class="whatsapp" href="https://wa.me/971523363396">WhatsApp</a>
+
+<script>
+
+/* CURSOR */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
+
+/* PARTICLES */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+for(let i=0;i<90;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+dx:(Math.random()-0.5)*0.4,
+dy:(Math.random()-0.5)*0.4
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.x+=p.dx;
+p.y+=p.dy;
+
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="#00e5ff";
+ctx.fill();
+});
+
+requestAnimationFrame(animate);
+}
+animate();
+
+/* GSAP */
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".hero h1",{y:60,opacity:0,duration:1});
+gsap.from(".hero h3",{y:40,opacity:0,duration:1,delay:0.2});
+gsap.from(".hero p",{y:30,opacity:0,delay:0.3});
+gsap.from(".btn",{scale:0.8,opacity:0,delay:0.5});
+
+/* SCROLL ANIMATIONS */
+gsap.utils.toArray("section").forEach(sec=>{
+gsap.from(sec,{
+scrollTrigger:{
+trigger:sec,
+start:"top 80%"
+},
+opacity:0,
+y:60,
+duration:1
+});
+});
+
+/* CARDS */
+gsap.to(".card",{
+scrollTrigger:{
+trigger:".grid",
+start:"top 80%"
+},
+opacity:1,
+y:0,
+stagger:0.15,
+duration:0.8
+});
+
+</script>
+
+</body>
+</html>
